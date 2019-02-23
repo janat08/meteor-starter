@@ -1,0 +1,49 @@
+﻿@Master['../Shared/_Layout']
+
+@Section['Head']
+<link rel="stylesheet" href="../../Content/css/style.css">
+<link rel="stylesheet" href="../../Content/css/stylechat.css">
+@EndSection
+
+@Section['Content']
+<div>
+	<div style="margin-top:10px;">
+		<img src="../../Content/ico/budgie-64.png" class="logo" />
+		<h2 class="caption" style="color:white;"><strong>Budgie</strong></h2>
+	</div>
+	<h3 id="session-title" style="color:white;"></h3>
+	
+    <div id="other-person" class="col-sm-6" style="background-color:yellow; height:640px;">
+		<p>This is the other person</p>
+    </div>
+
+    <div id="this-person" class="col-sm-6" style="background-color:green; height:640px;">
+		<p>This is me</p>
+    </div>
+	
+</div>
+@EndSection
+
+@Section['Scripts']
+<script src="../../Scripts/jquery-3.3.1.min.js"></script>
+<script src="../../Scripts/bootstrap.min.js"></script>
+<script src="../../Scripts/browser-2.7.0.js"></script>
+<script src="../../Scripts/jquery.backstretch.min.js"></script>
+
+<script>
+    var sessionId;
+    var sessionToken;
+    var userName;
+
+    $(function () {
+        $.backstretch("../content/img/backgrounds/9.jpg");
+
+        sessionId = "@Model.SessionId";
+        sessionToken = "@Model.TokenId";
+        userName = "@Model.UserData.UserName";
+        joinSession();
+    });
+</script>
+
+<script src="../../Scripts/chatapp.js"></script>
+@EndSection

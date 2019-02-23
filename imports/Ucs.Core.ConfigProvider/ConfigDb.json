@@ -1,0 +1,136 @@
+﻿{
+  "Environment": {
+    "CompanyId": "{756E66D7-8EBF-4522-9AAC-5FCCBD5400D4}"
+  },
+  "DataAccessTypes": [
+      {
+        "Id": "JSN",
+        "Name": "Json",
+        "DataProviderTypes": [
+          {
+            "Id": "FTX",
+            "Name": "Text File From File System",
+            "AccessInfoKeys": [
+              "Path"
+            ]
+          },
+          {
+            "Id": "RWS",
+            "Name": "RESTful Web Service",
+            "AccessInfoKeys": ""
+          }
+        ]
+      },
+      {
+        "Id": "SQL",
+        "Name": "Sql Server",
+        "DataProviderTypes": [
+          {
+            "Id": "SQDP1",
+            "Name": ".NET Framework Data Provider for SQL Server",
+            "AccessInfoKeys": [
+              "ConnectionString"
+            ]
+          }  
+        ]
+      }
+    ],
+  "DataAccessList": [
+      {
+        "Id": "JSN1",
+        "Name": "ConfigDb.json",
+        "TypeId": "JSN",
+        "DataProviderTypeId": "FTX",
+        "AccessInfo": { "Path": "ConfigDb.json" }
+      },
+      {
+        "Id": "SQL1",
+        "Name": "UcmsDb",
+        "TypeId": "SQL",
+        "DataProviderTypeId": "SQDP1",
+        "AccessInfo": { "ConnectionString": "" }
+      }
+    ],
+  "ApplicationTypes": [
+    {
+      "Id": "CNP",
+      "Name": "Config Provider"
+    },
+    {
+      "Id": "LIC",
+      "Name": "License Provider"
+    },
+    {
+      "Id": "APP",
+      "Name": "Application"
+    },
+    {
+      "Id": "SVC",
+      "Name": "Service"
+    }
+  ],
+  "ApplicationList": [
+    {
+      "Id": "{BF98FA33-D3D9-40EA-972A-6B4758075503}",
+      "Name": "Conf1",
+      "TypeId": "CNP",
+      "ServiceIds": null,
+      "BackupId": "{3CBEE26A-CEE0-43FD-B911-8A93EB87B761}",
+      "DataAccessId": "JSN1",
+      "Url": "http://localhost:6000",
+      "Port": "6000",
+      "Protocol": "http"
+    },
+    {
+      "Id": "{3CBEE26A-CEE0-43FD-B911-8A93EB87B761}",
+      "Name": "Conf2",
+      "TypeId": "CNP",
+      "ServiceIds": null,
+      "BackupId": null,
+      "DataAccessId": "JSN1",
+      "Url": "http://localhost:6002",
+      "Port": "6001",
+      "Protocol": "http"
+    },
+    {
+      "Id": "{3CBEE26A-CEE0-43FD-B911-8A93EB87B761}",
+      "Name": "License1",
+      "TypeId": "LIC",
+      "ServiceIds": [
+        "{BF98FA33-D3D9-40EA-972A-6B4758075503}"
+      ],
+      "BackupId": null,
+      "DataAccessId": null,
+      "Url": "http://localhost:6001",
+      "Port": "6002",
+      "Protocol": "http"
+    },
+    {
+      "Id": "{E0DC5F82-10E8-4253-A636-4A1B127A4CEC}",
+      "Name": "Camp1",
+      "Type": "SVC",
+      "ServiceIds": [
+        "{BF98FA33-D3D9-40EA-972A-6B4758075503}"
+      ],
+      "BackupId": null,
+      "DataAccessId": "SQL1",
+      "Url": "http://localhost:6003",
+      "Port": "6003",
+      "Protocol": "http"
+    },
+    {
+      "Id": "{7C0818DA-35FE-4AB8-BF83-54C486540AE2}",
+      "Name": "Campaign Design Preview",
+      "TypeId": "APP",
+      "ServiceIds": [
+        "{BF98FA33-D3D9-40EA-972A-6B4758075503}",
+        "{E0DC5F82-10E8-4253-A636-4A1B127A4CEC}"
+      ],
+      "BackupId": null,
+      "DataAccessId": "SQL1",
+      "Url": "http://localhost:6100",
+      "Port": "6100",
+      "Protocol": "http"
+    }
+  ]
+}
